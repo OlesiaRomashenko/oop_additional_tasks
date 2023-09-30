@@ -9,7 +9,24 @@
 
 
 class Point:
-    pass
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.x}, {self.y})"
+
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+
+    def __add__(self, other):
+        new = self.__class__(self.x, self.y)
+        if isinstance(other, self.__class__):
+            new.x = self.x + other.x
+            new.y = self.y + other.y
+            return new
+        else:
+            ValueError
 
 
 point1 = Point(1, 2)
